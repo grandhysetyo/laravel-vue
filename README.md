@@ -26,3 +26,4 @@ Run backend: php artisan serve
 ```properties
 Run frontend: npm run watch
 ``` 
+Video part 7: Route Configuration + Router link & view 

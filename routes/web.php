@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
+// Route::get('/home', function () {
+//     return view('latihan1');
+// });
+
+Route::any('/{slug}', function () {
     return view('latihan1');
 });
