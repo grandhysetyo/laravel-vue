@@ -14,6 +14,7 @@ const routes = [
         component: Home
     },
     {
+        name: 'Home',
         path: '/home',
         component: Home
     },
@@ -22,8 +23,10 @@ const routes = [
         component: About
     },
     {
+        name: 'User',
         path: '/user/:name?', //tanda ? digunakan untuk parameter opsional jika pengguna melakukan uri /user saja
-        component: User
+        component: User,
+        props: true
     },
     {
         path:'*',
