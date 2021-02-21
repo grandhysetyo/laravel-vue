@@ -26,4 +26,4 @@ Run backend: php artisan serve
 ```properties
 Run frontend: npm run watch
 ``` 
-Video part 7: Route Configuration + Router link & view 
+Video part 7 - 11: Route Configuration + Router link & view + Handling not found page + Mode history route + Export routes
