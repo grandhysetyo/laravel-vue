@@ -13,14 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/haha', function () {
     return view('welcome');
 });
 
 // Route::get('/home', function () {
 //     return view('latihan1');
 // });
-
-Route::any('/{slug}', function () {
+Route::get('/{any}', function () {
     return view('latihan1');
-});
+})->where('any', '.*');
+
+// Route::any('/{slug1}/{slug2}', function () {
+//     return view('latihan1');
+// });
