@@ -8,6 +8,7 @@ const About = require('../pages/About.vue').default
 // const NotFound = require('./pages/NotFound.vue').default  // cara import cara kedua
 import NotFound from '../pages/NotFound.vue'
 import User from '../pages/User.vue'
+import Profile from '../pages/User.vue'
 const routes = [
     {
         path: '/',

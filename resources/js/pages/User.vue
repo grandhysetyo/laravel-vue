@@ -1,6 +1,6 @@
 <template>    
-    <div v-if="username">
-        <h1>Hello User, {{username}}</h1>
+    <div v-if="id">
+        <h1>Hello User, {{detailuser.name}}</h1>
         <span>
             <router-link to="/user">back</router-link> <!-- atau bisa menggunakan -->
             <a href="" v-on:click.prevent="list_user()">list user</a> <!-- prevent untuk tidak redirect ke a href nya -->
@@ -11,13 +11,13 @@
         
         <ul>
             <li v-for="user in users" v-bind:key="user.id"> 
-                <router-link :to="profile_uri(user.name)">{{user.name}}</router-link>                                   
+                <router-link :to="profile_uri(user.id)">{{user.name}}</router-link>                                   
             </li>
         </ul>
         <ul>
             <li v-for="user in users" v-bind:key="user.id"> 
                 <!-- @clik sama dengan v-on + prevent untuk tidak redirect ke a href nya -->  
-                <a href="" @click.prevent="lihat_user(user.name)">{{user.name}}</a>                     
+                <a href="" @click.prevent="lihat_user(user.id)">{{user.name}}</a>                     
             </li>
                 
         </ul>
@@ -26,35 +26,46 @@
 
 <script>
 export default {
-    props: ['username'],
+    props: ['id'],
     data() {
         return {
-            users: []
+            users: [],
+            detailuser: {}
         }
     },
-    mounted(){
-        axios.get('/api/users').then((res) => {
-            console.log(res.data)
-            this.users = res.data
-        })
-        //atau menggunakan fetch api
-        // fetch('/api/users').then(response => response.json()).then(data=>{
-        //     console.log(data)
-        //     this.users = data
-        // })
+    watch: {
+        '$route': 'getUsers' //sedangkan watch dipanggil ketika route dari user nya berubah
+    },
+    mounted(){ // mounted dipakai tiap kali uri component diload kayak constructor
+        this.getUsers()
     },
     methods: {
-        profile_uri(name){
-            return 'user/' + name.toLowerCase()
+        getUsers(){
+            axios.get('/api/users').then((res) => {
+                //console.log(res.data)
+                this.users = res.data
+                if(this.id) {
+                    this.detailuser = this.users.filter(item => item.id == this.id)[0]
+                    console.log(this.detailuser)
+                }
+            })
+            //atau menggunakan fetch api
+            // fetch('/api/users').then(response => response.json()).then(data=>{
+            //     console.log(data)
+            //     this.users = data
+            // })
         },
-        lihat_user(name){
+        profile_uri(id){
+            return 'user/' + id
+        },
+        lihat_user(id){
             this.$router.push({
                 name: 'User',
-                params: {username:name} 
+                params: {id:id} 
             })
         },
         list_user(){
-            this.$router.push('/user/')
+            this.$router.push('/user')
         }
     }
 }

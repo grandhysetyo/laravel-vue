@@ -1907,38 +1907,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['username'],
+  props: ['id'],
   data: function data() {
     return {
-      users: []
+      users: [],
+      detailuser: {}
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  watch: {
+    '$route': 'getUsers' //sedangkan watch dipanggil ketika route dari user nya berubah
 
-    axios.get('/api/users').then(function (res) {
-      console.log(res.data);
-      _this.users = res.data;
-    }); //atau menggunakan fetch api
-    // fetch('/api/users').then(response => response.json()).then(data=>{
-    //     console.log(data)
-    //     this.users = data
-    // })
+  },
+  mounted: function mounted() {
+    // mounted dipakai tiap kali uri component diload kayak constructor
+    this.getUsers();
   },
   methods: {
-    profile_uri: function profile_uri(name) {
-      return 'user/' + name.toLowerCase();
+    getUsers: function getUsers() {
+      var _this = this;
+
+      axios.get('/api/users').then(function (res) {
+        //console.log(res.data)
+        _this.users = res.data;
+
+        if (_this.id) {
+          _this.detailuser = _this.users.filter(function (item) {
+            return item.id == _this.id;
+          })[0];
+          console.log(_this.detailuser);
+        }
+      }); //atau menggunakan fetch api
+      // fetch('/api/users').then(response => response.json()).then(data=>{
+      //     console.log(data)
+      //     this.users = data
+      // })
     },
-    lihat_user: function lihat_user(name) {
+    profile_uri: function profile_uri(id) {
+      return 'user/' + id;
+    },
+    lihat_user: function lihat_user(id) {
       this.$router.push({
         name: 'User',
         params: {
-          username: name
+          id: id
         }
       });
     },
     list_user: function list_user() {
-      this.$router.push('/user/');
+      this.$router.push('/user');
     }
   }
 });
@@ -2038,6 +2054,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__.default.use(vue_router__WEBPACK_IMPORTED_MODULE
 var Home = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue").default;
 
 var About = __webpack_require__(/*! ../pages/About.vue */ "./resources/js/pages/About.vue").default; // const NotFound = require('./pages/NotFound.vue').default  // cara import cara kedua
+
 
 
 
@@ -38017,9 +38034,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.username
+  return _vm.id
     ? _c("div", [
-        _c("h1", [_vm._v("Hello User, " + _vm._s(_vm.username))]),
+        _c("h1", [_vm._v("Hello User, " + _vm._s(_vm.detailuser.name))]),
         _vm._v(" "),
         _c(
           "span",
@@ -38053,11 +38070,9 @@ var render = function() {
               "li",
               { key: user.id },
               [
-                _c(
-                  "router-link",
-                  { attrs: { to: _vm.profile_uri(user.name) } },
-                  [_vm._v(_vm._s(user.name))]
-                )
+                _c("router-link", { attrs: { to: _vm.profile_uri(user.id) } }, [
+                  _vm._v(_vm._s(user.name))
+                ])
               ],
               1
             )
@@ -38076,7 +38091,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       $event.preventDefault()
-                      return _vm.lihat_user(user.name)
+                      return _vm.lihat_user(user.id)
                     }
                   }
                 },
