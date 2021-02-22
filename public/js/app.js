@@ -1889,8 +1889,55 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['name']
+  props: ['username'],
+  data: function data() {
+    return {
+      users: [{
+        id: 1,
+        name: 'grandhysetyo'
+      }, {
+        id: 2,
+        name: 'sit aet'
+      }, {
+        id: 3,
+        name: 'lorem ipsun'
+      }]
+    };
+  },
+  methods: {
+    profile_uri: function profile_uri(name) {
+      return 'user/' + name.toLowerCase();
+    },
+    lihat_user: function lihat_user(name) {
+      this.$router.push({
+        name: 'User',
+        params: {
+          username: name
+        }
+      });
+    },
+    list_user: function list_user() {
+      this.$router.push('/user/');
+    }
+  }
 });
 
 /***/ }),
@@ -2004,7 +2051,7 @@ var routes = [{
   component: About
 }, {
   name: 'User',
-  path: '/user/:name?',
+  path: '/user/:username?',
   //tanda ? digunakan untuk parameter opsional jika pengguna melakukan uri /user saja
   component: _pages_User_vue__WEBPACK_IMPORTED_MODULE_3__.default,
   props: true
@@ -37966,9 +38013,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.name
-    ? _c("div", [_c("h1", [_vm._v("Hello User, " + _vm._s(_vm.name))])])
-    : _c("div", [_c("h1", [_vm._v("Daftar User")])])
+  return _vm.username
+    ? _c("div", [
+        _c("h1", [_vm._v("Hello User, " + _vm._s(_vm.username))]),
+        _vm._v(" "),
+        _c(
+          "span",
+          [
+            _c("router-link", { attrs: { to: "/user" } }, [_vm._v("back")]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                attrs: { href: "" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.list_user()
+                  }
+                }
+              },
+              [_vm._v("list user")]
+            )
+          ],
+          1
+        )
+      ])
+    : _c("div", [
+        _c("h1", [_vm._v("Daftar User")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          _vm._l(_vm.users, function(user) {
+            return _c(
+              "li",
+              { key: user.id },
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: _vm.profile_uri(user.name) } },
+                  [_vm._v(_vm._s(user.name))]
+                )
+              ],
+              1
+            )
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          _vm._l(_vm.users, function(user) {
+            return _c("li", { key: user.id }, [
+              _c(
+                "a",
+                {
+                  attrs: { href: "" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.lihat_user(user.name)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(user.name))]
+              )
+            ])
+          }),
+          0
+        )
+      ])
 }
 var staticRenderFns = []
 render._withStripped = true

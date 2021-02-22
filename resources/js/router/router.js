@@ -24,7 +24,7 @@ const routes = [
     },
     {
         name: 'User',
-        path: '/user/:name?', //tanda ? digunakan untuk parameter opsional jika pengguna melakukan uri /user saja
+        path: '/user/:username?', //tanda ? digunakan untuk parameter opsional jika pengguna melakukan uri /user saja
         component: User,
         props: true
     },
