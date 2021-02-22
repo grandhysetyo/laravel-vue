@@ -29,21 +29,19 @@ export default {
     props: ['username'],
     data() {
         return {
-            users: [
-                {
-                    id:1,
-                    name: 'grandhysetyo'
-                },
-                {
-                    id:2,
-                    name: 'sit aet'
-                },
-                {
-                    id:3,
-                    name: 'lorem ipsun'
-                }
-            ]
+            users: []
         }
+    },
+    mounted(){
+        axios.get('/api/users').then((res) => {
+            console.log(res.data)
+            this.users = res.data
+        })
+        //atau menggunakan fetch api
+        // fetch('/api/users').then(response => response.json()).then(data=>{
+        //     console.log(data)
+        //     this.users = data
+        // })
     },
     methods: {
         profile_uri(name){

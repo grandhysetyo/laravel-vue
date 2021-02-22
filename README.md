@@ -41,3 +41,6 @@ Make class seeder: php artisan make:seeder <namaSeeder>
 ```properties
 Run class seeder: php artisan db:seed --class=<namaSeeder>
 ```
+Video part 24 - 27: Query and Controller Builder  + response JSON + penggunaan Axios atau fetch api bawaan
+```properties
+Run ctrl builder: php artisan make:controller AuthController

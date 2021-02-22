@@ -1910,17 +1910,20 @@ __webpack_require__.r(__webpack_exports__);
   props: ['username'],
   data: function data() {
     return {
-      users: [{
-        id: 1,
-        name: 'grandhysetyo'
-      }, {
-        id: 2,
-        name: 'sit aet'
-      }, {
-        id: 3,
-        name: 'lorem ipsun'
-      }]
+      users: []
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/api/users').then(function (res) {
+      console.log(res.data);
+      _this.users = res.data;
+    }); //atau menggunakan fetch api
+    // fetch('/api/users').then(response => response.json()).then(data=>{
+    //     console.log(data)
+    //     this.users = data
+    // })
   },
   methods: {
     profile_uri: function profile_uri(name) {
