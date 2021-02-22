@@ -29,4 +29,5 @@ Run frontend: npm run watch
 Video part 7 - 11: Route Configuration + Router link & view + Handling not found page + Mode history route + Export routes \
 Video part 12 - 13: Route dynamic + Parameter opsional \
 Video part 14: Props + Route name \
-Video part 15 - 17: List user + pages profile + router push
+Video part 15 - 17: List user + pages profile + router push \
+Video part 18: link active  \

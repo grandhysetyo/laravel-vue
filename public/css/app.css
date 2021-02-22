@@ -10944,4 +10944,10 @@ a.text-dark:focus {
   }
 }
 
+.active {
+  background: salmon;
+  color: seashell;
+  padding: 5px;
+}
+
 
