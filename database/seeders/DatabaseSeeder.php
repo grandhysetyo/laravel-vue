@@ -13,6 +13,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // DatabaseSeeder ini digunakan untuk menjalakan beberapa class seeder yang ada
+        $this->call([
+            UserSeeder::class            
+        ]);
+        // cara run nya dengan menggunakan >php artisan db:seed
+        // $this->call([
+        //     UserSeeder::class,
+        //     classSeeder2::class
+        // ]);
     }
 }

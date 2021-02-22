@@ -31,3 +31,13 @@ Video part 12 - 13: Route dynamic + Parameter opsional \
 Video part 14: Props + Route name \
 Video part 15 - 17: List user + pages profile + router push \
 Video part 18: link active  \
+Video part 19 - 23: Intro database + setting database + db migration laravel + Database seeder (make data dummy) + generate data dummy using seeder
+```properties
+Run migration: php artisan migrate
+``` 
+```properties
+Make class seeder: php artisan make:seeder <namaSeeder>
+``` 
+```properties
+Run class seeder: php artisan db:seed --class=<namaSeeder>
+```
