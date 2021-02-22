@@ -45,4 +45,5 @@ Video part 24 - 27: Query and Controller Builder  + response JSON + penggunaan A
 ```properties
 Run ctrl builder: php artisan make:controller AuthController
 Video part 28: Component User \ 
-Video part 29: Component Profile \
+Video part 29: Component Profile + axios get \
+Video part 30 - 34: Eloquent ORM + Component Register +  Axios Post + Insert Data Ctrl + Response & Redirect \

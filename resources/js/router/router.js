@@ -8,6 +8,7 @@ const About = require('../pages/About.vue').default
 // const NotFound = require('./pages/NotFound.vue').default  // cara import cara kedua
 import NotFound from '../pages/NotFound.vue'
 import User from '../pages/User.vue'
+import Register from '../pages/Register.vue'
 import Profile from '../pages/Profile.vue'
 const routes = [
     {
@@ -27,6 +28,11 @@ const routes = [
         name: 'User',
         path: '/user', 
         component: User,
+    },
+    {
+        name: 'Register',
+        path: '/user/create', 
+        component: Register,
     },
     {
         name: 'Profile',

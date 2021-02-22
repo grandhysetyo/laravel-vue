@@ -1,6 +1,7 @@
 <template>        
     <div>
-        <h1>Daftar User</h1>        
+        <h1>Daftar User</h1>    
+        <router-link to='/user/create'>Register</router-link>    
         <ul>
             <li v-for="user in users" v-bind:key="user.id"> 
                 <router-link :to="profile_uri(user.id)">{{user.name}}</router-link>                                   
