@@ -8,7 +8,7 @@ const About = require('../pages/About.vue').default
 // const NotFound = require('./pages/NotFound.vue').default  // cara import cara kedua
 import NotFound from '../pages/NotFound.vue'
 import User from '../pages/User.vue'
-import Profile from '../pages/User.vue'
+import Profile from '../pages/Profile.vue'
 const routes = [
     {
         path: '/',
@@ -25,8 +25,13 @@ const routes = [
     },
     {
         name: 'User',
-        path: '/user/:username?', //tanda ? digunakan untuk parameter opsional jika pengguna melakukan uri /user saja
+        path: '/user', 
         component: User,
+    },
+    {
+        name: 'Profile',
+        path: '/user/:id', 
+        component: Profile,
         props: true
     },
     {

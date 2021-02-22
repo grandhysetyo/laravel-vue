@@ -13,5 +13,10 @@ class AuthController extends Controller
         //dump($users); // or dd($users) dengan dd program tidak akan melanjutkan compile ke bawah
         return response()->json($users);
     }
+    public function showById($id){
+        $users = DB::table('users')->where('id',$id)->first();    
+        //dump($users); // or dd($users) dengan dd program tidak akan melanjutkan compile ke bawah
+        return response()->json($users);
+    }
     
 }

@@ -1,14 +1,6 @@
-<template>    
-    <div v-if="id">
-        <h1>Hello User, {{detailuser.name}}</h1>
-        <span>
-            <router-link to="/user">back</router-link> <!-- atau bisa menggunakan -->
-            <a href="" v-on:click.prevent="list_user()">list user</a> <!-- prevent untuk tidak redirect ke a href nya -->
-        </span>
-    </div>
-    <div v-else>
-        <h1>Daftar User</h1>
-        
+<template>        
+    <div>
+        <h1>Daftar User</h1>        
         <ul>
             <li v-for="user in users" v-bind:key="user.id"> 
                 <router-link :to="profile_uri(user.id)">{{user.name}}</router-link>                                   
@@ -60,7 +52,7 @@ export default {
         },
         lihat_user(id){
             this.$router.push({
-                name: 'User',
+                name: 'Profile',
                 params: {id:id} 
             })
         },
