@@ -1893,6 +1893,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['id'],
   data: function data() {
@@ -1912,6 +1913,24 @@ __webpack_require__.r(__webpack_exports__);
         // console.log(res.data)
         _this.detailuser = res.data;
       });
+    },
+    handlingDelete: function handlingDelete() {
+      var _this2 = this;
+
+      if (confirm('Apakah anda yakin menghapus data ?')) {
+        axios["delete"]('/api/users/' + this.id).then(function (res) {
+          if (res.data.status) {
+            // console.log(response)
+            _this2.$noty.success(res.data.message);
+
+            _this2.$router.push({
+              name: 'User'
+            });
+          }
+        });
+      } else {
+        return false;
+      }
     },
     list_user: function list_user() {
       this.$router.push('/user');
@@ -38744,6 +38763,22 @@ var render = function() {
         _c("h1", [_vm._v("Hello User, " + _vm._s(_vm.detailuser.name))]),
         _vm._v(" "),
         _c("p", [_vm._v("Email : " + _vm._s(_vm.detailuser.email))]),
+        _vm._v(" "),
+        _c("p", [
+          _c(
+            "a",
+            {
+              attrs: { href: "" },
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.handlingDelete($event)
+                }
+              }
+            },
+            [_vm._v("Delete")]
+          )
+        ]),
         _vm._v(" "),
         _c(
           "p",

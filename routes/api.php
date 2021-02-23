@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::get('/users', [AuthController::class, 'index']);
 Route::post('/users', [AuthController::class, 'add']);
+Route::delete('/users/{id}', [AuthController::class, 'delete']);
 Route::get('/users/{id}', [AuthController::class, 'showById']);
