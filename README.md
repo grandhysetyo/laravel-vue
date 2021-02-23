@@ -44,6 +44,11 @@ Run class seeder: php artisan db:seed --class=<namaSeeder>
 Video part 24 - 27: Query and Controller Builder  + response JSON + penggunaan Axios atau fetch api bawaan
 ```properties
 Run ctrl builder: php artisan make:controller AuthController
+```
 Video part 28: Component User \ 
 Video part 29: Component Profile + axios get \
 Video part 30 - 34: Eloquent ORM + Component Register +  Axios Post + Insert Data Ctrl + Response & Redirect \
+Video part 35 - 39: Vuejs Noty + Mass Asiggment + Validation + Show Error Validation + Response Validator
+```properties
+Run npm: npm install vuejs-noty
+```

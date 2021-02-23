@@ -7,6 +7,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// Vuejs noty style
+@import '~vuejs-noty/dist/vuejs-noty.css';
+
 .active {
     background: salmon;
     color: seashell;
