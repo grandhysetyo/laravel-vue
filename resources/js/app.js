@@ -6,7 +6,6 @@ import VueNoty from 'vuejs-noty'
 
 Vue.use(VueNoty)
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', require('./components/Header.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
 
