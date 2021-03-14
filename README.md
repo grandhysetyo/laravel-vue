@@ -52,4 +52,5 @@ Video part 35 - 39: Vuejs Noty + Mass Asiggment + Validation + Show Error Valida
 ```properties
 Run npm: npm install vuejs-noty
 ```
-Video part 40 - 41: Axios delete + confirm delete
+Video part 40 - 41: Axios delete + confirm delete \
+Video part 41 - 42: Update data

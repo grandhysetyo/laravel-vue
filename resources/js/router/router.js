@@ -10,6 +10,7 @@ import NotFound from '../pages/NotFound.vue'
 import User from '../pages/User.vue'
 import Register from '../pages/Register.vue'
 import Profile from '../pages/Profile.vue'
+import EditUser from '../pages/EditUser.vue'
 const routes = [
     {
         path: '/',
@@ -38,6 +39,12 @@ const routes = [
         name: 'Profile',
         path: '/user/:id', 
         component: Profile,
+        props: true
+    },
+    {
+        name: 'Edit',
+        path: '/user/:id/edit', 
+        component: EditUser,
         props: true
     },
     {

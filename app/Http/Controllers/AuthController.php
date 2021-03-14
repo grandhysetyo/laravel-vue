@@ -82,6 +82,21 @@ class AuthController extends Controller
             'data'=> $user
         ]);
     }
+    public function update($id, Request $request){        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email'
+        ]);
+        User::where('id', $id)
+        ->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+        return response()->json([
+            'status'=> true,
+            'message'=> 'Data berhasil diedit!!'            
+        ]);
+    }
     public function delete($id){
         $user = User::find($id);
         $user->delete();

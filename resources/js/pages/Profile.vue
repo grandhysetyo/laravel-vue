@@ -3,6 +3,7 @@
         <h1>Hello User, {{detailuser.name}}</h1>   
         <p>Email : {{detailuser.email}}</p> 
         <p><a href="" v-on:click.prevent="handlingDelete">Delete</a></p>    
+        <p><router-link :to="edit_uri(id)">Edit</router-link></p> 
         <p>
             <router-link to="/user">back</router-link> <!-- atau bisa menggunakan -->
             <a href="" v-on:click.prevent="list_user()">list user</a> <!-- prevent untuk tidak redirect ke a href nya -->
@@ -46,9 +47,13 @@ export default {
             }
             
         },
+        edit_uri(id){
+            return  id +'/edit'
+        },
         list_user(){
             this.$router.push('/user')
         }
+        
     }
 }
 </script>
